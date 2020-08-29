@@ -30,3 +30,5 @@ package.json
 ```bash
 npm run build
 ```
+
+jj.xie@aliyun.com
