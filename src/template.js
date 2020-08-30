@@ -1,14 +1,19 @@
 (function (modules) {
+  // 存储执行过的模块
   let installModules = {};
-
+  /**
+   * 自定义require方法，打包时会把所有的require替换为__xpack_require__
+   * @param {*} moduleId 就是模块的相对路径名
+   */
   function __xpack_require__(moduleId) {
     if (installModules[moduleId]) {
       return installModules[moduleId].exports;
     }
+    // 初始化module对象
     const module = (installModules[moduleId] = {
       exports: {},
     });
-
+    // 根据传入的模块id调用模块
     modules[moduleId].call(
       module.exports,
       module,
